@@ -8,6 +8,7 @@ using UnityEngine.Video;
 public class BGCubeController : MonoBehaviour
 {
     public PairCube[] pairCubeList;
+    int count = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,12 +35,12 @@ public class BGCubeController : MonoBehaviour
             }
             else
             {
-                count++;
+                count++; 
                 if (count > 3)
                 {
                     for (int i = 0; i < pairCubeList.Length; i++)
                     {
-                        if (pairCubeList[i].isPlayingVideo)
+                        if (!pairCubeList[i].isPlayingVideo)
                         {
                             foundPair = true;
                             ran = i;
@@ -50,5 +51,8 @@ public class BGCubeController : MonoBehaviour
             }
         }
         return pairCubeList[ran];
+        //PairCube temp = pairCubeList[count];
+        //count++;
+        //return temp;
     }
 }

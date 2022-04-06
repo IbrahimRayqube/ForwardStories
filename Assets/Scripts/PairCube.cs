@@ -13,6 +13,7 @@ public class PairCube : MonoBehaviour
     public Vector3 videoPlayerRightPosition;
     public bool isPlayingVideo;
     public VideoData currentVideo;
+    public GameObject picArea;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,9 +54,11 @@ public class PairCube : MonoBehaviour
 
     public void playVideo()
     {
+        Debug.Log("6");
         int ran = Random.Range(0, 2);
         if (ran == 0)
         {
+            Debug.Log("7a");
             Debug.Log("Slide Left");
             slideLeft();
             videoTexture.transform.localPosition = videoPlayerRightPosition;
@@ -63,6 +66,7 @@ public class PairCube : MonoBehaviour
         else
         {
             Debug.Log("Slide Right");
+            Debug.Log("7b");
             slideRight();
             videoTexture.transform.localPosition = videoPlayerLeftPosition;
         }
@@ -71,6 +75,10 @@ public class PairCube : MonoBehaviour
 
     IEnumerator startVideoWithDelay()
     {
+        //picArea.SetActive(true);
+        //yield return new WaitForSeconds(3);
+        //picArea.SetActive(false);
+        Debug.Log("8");
         yield return new WaitForSeconds(0.5f);
         //videoPlayer.enabled = true;
         videoPlayer.clip = currentVideo.video;
