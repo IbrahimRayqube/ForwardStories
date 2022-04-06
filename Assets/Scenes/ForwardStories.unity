@@ -433,7 +433,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -962.74, y: -539.92}
+  m_AnchoredPosition: {x: -963.45, y: -539.92}
   m_SizeDelta: {x: 189.6518, y: 217.9314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357636179
@@ -676,7 +676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -959.32, y: -539.91}
+  m_AnchoredPosition: {x: -959.98, y: -539.91}
   m_SizeDelta: {x: 189.6518, y: 217.9314}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514542421
@@ -1101,8 +1101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1142643171}
   videoTexture: {fileID: 514542421}
-  videoPlayerLeftPosition: {x: -960.02, y: -539.91, z: 1.72}
-  videoPlayerRightPosition: {x: -959.32, y: -539.91, z: 1.72}
+  videoPlayerLeftPosition: {x: -959.98, y: -539.91, z: 1.72}
+  videoPlayerRightPosition: {x: -959.27, y: -539.91, z: 1.72}
   isPlayingVideo: 0
   currentVideo:
     video: {fileID: 0}
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 46986253}
   videoTexture: {fileID: 357636179}
-  videoPlayerLeftPosition: {x: -963.47, y: -539.92, z: 1.72}
+  videoPlayerLeftPosition: {x: -963.45, y: -539.92, z: 1.72}
   videoPlayerRightPosition: {x: -962.74, y: -539.92, z: 1.72}
   isPlayingVideo: 0
   currentVideo:
@@ -1644,11 +1644,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pairCubeList:
   - {fileID: 620342889}
-  - {fileID: 1389009729}
   - {fileID: 1348418197}
-  - {fileID: 1191892748}
   - {fileID: 758846354}
+  - {fileID: 1389009729}
+  - {fileID: 1191892748}
   - {fileID: 949619236}
+  videoCount: 0
 --- !u!1 &1817360974
 GameObject:
   m_ObjectHideFlags: 0

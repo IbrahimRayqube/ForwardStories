@@ -17,32 +17,17 @@ public class PairCube : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        videoPlayer.loopPointReached += videoCompleted;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isPlayingVideo)
-        {
-            Debug.Log(isPlayingVideo);
-            if (!videoPlayer.isPlaying)
-            {
-                if(videoPlayer.isPlaying)
-                isPlayingVideo = false;
-                if (currentVideo != null)
-                {
-                    Debug.Log(currentVideo);
-                    currentVideo.isPlaying = false;
-                    SceneController.Instance.videoEnded();
-                    currentVideo = null;
-                }
-            }
-        }
-
     }
 
     public void slideLeft()
     {
+        Debug.Log("slidingLeft");
         if (animator != null)
         {
             animator.SetTrigger("stretchleft");
@@ -51,6 +36,7 @@ public class PairCube : MonoBehaviour
 
     public void slideRight()
     {
+        Debug.Log("slidingRight");
         if (animator != null)
         {
             animator.SetTrigger("stretchright");
@@ -70,13 +56,15 @@ public class PairCube : MonoBehaviour
         int ran = Random.Range(0, 2);
         if (ran == 0)
         {
+            Debug.Log("Slide Left");
             slideLeft();
-            videoPlayer.transform.position = videoPlayerLeftPosition;
+            videoTexture.transform.localPosition = videoPlayerRightPosition;
         }
         else
         {
+            Debug.Log("Slide Right");
             slideRight();
-            videoPlayer.transform.position = videoPlayerRightPosition;
+            videoTexture.transform.localPosition = videoPlayerLeftPosition;
         }
         StartCoroutine(startVideoWithDelay());
     }
@@ -92,5 +80,20 @@ public class PairCube : MonoBehaviour
         isPlayingVideo = true;
     }
 
+    void videoCompleted(VideoPlayer vp)
+    {
+        isPlayingVideo = false;
+        shiftToIdle();
+        clearTextures(videoPlayer.targetTexture);
+    }
 
+    public void clearTextures(RenderTexture renderTexture)
+    {
+        Debug.Log("Clearing Textures");
+        RenderTexture rt = RenderTexture.active;
+        RenderTexture.active = renderTexture;
+        GL.Clear(true, true, Color.clear);
+        RenderTexture.active = rt;
+        SceneController.Instance.clearTextures();
+    }
 }

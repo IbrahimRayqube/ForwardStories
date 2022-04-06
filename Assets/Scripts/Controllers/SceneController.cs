@@ -37,15 +37,17 @@ public class SceneController : Singleton<SceneController>
 
     public void clearTextures()
     {
-        Debug.Log("Clearing Textures");
         for (int i = 0; i < allRenderTextures.Length; i++)
         {
-            RenderTexture rt = UnityEngine.RenderTexture.active;
-            UnityEngine.RenderTexture.active = allRenderTextures[i];
+            RenderTexture rt = RenderTexture.active;
+            RenderTexture.active = allRenderTextures[i];
             GL.Clear(true, true, Color.clear);
-            UnityEngine.RenderTexture.active = rt;
+            RenderTexture.active = rt;
         }
     }
+
+    
+
 
     public VideoData findVideoToPlay()
     {
