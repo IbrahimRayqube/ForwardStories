@@ -75,17 +75,17 @@ public class PairCube : MonoBehaviour
 
     IEnumerator startVideoWithDelay()
     {
-        //picArea.SetActive(true);
-        //yield return new WaitForSeconds(3);
-        //picArea.SetActive(false);
-        Debug.Log("8");
+        currentVideo.isPlaying = true;
+        isPlayingVideo = true;
         yield return new WaitForSeconds(0.5f);
+        picArea.SetActive(true);
+        yield return new WaitForSeconds(3);
+        picArea.SetActive(false);
+        //yield return new WaitForSeconds(0.5f);
         //videoPlayer.enabled = true;
         videoPlayer.clip = currentVideo.video;
-        currentVideo.isPlaying = true;
         videoPlayer.gameObject.SetActive(true);
         videoPlayer.Play();
-        isPlayingVideo = true;
     }
 
     void videoCompleted(VideoPlayer vp)

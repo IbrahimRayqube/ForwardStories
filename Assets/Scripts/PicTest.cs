@@ -4,29 +4,37 @@ using UnityEngine;
 
 public class PicTest : MonoBehaviour
 {
-    WebCamTexture webCamTexture;
+    private WebCamTexture _webcamTexture;
+    private Renderer _renderer;
+    // Assign the Material you are using for the web cam feed
+    [SerializeField] private Material webCamTex;
+
+
+
+
 
     void Start()
     {
+
+        webCamTex = Resources.Load("webCamTex", typeof(Material)) as Material;
+
+        // Grabbing all web cam devices
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        // I just use the first one, use which ever one you need 
+        string camName = devices[0].name;
+
+        // set the Texture from the cam feed
+        WebCamTexture camFeed = new WebCamTexture(camName);
+
+        // Assign the materials texture to the WebCamTexture you made,
+        // this applies it to all objects using this Material
+        webCamTex.mainTexture = camFeed;
+
+        // Then start the texture
+        camFeed.Play();
+
+        //gameObject.GetComponent<Renderer>().material = webCamTex;
+
     }
-
-    //IEnumerator TakePhoto()  // Start this Coroutine on some button click
-    //{
-
-    //    // NOTE - you almost certainly have to do this here:
-
-    //    yield return new WaitForEndOfFrame();
-
-    //    // it's a rare case where the Unity doco is pretty clear,
-    //    // http://docs.unity3d.com/ScriptReference/WaitForEndOfFrame.html
-    //    // be sure to scroll down to the SECOND long example on that doco page 
-
-    //    Texture2D photo = new Texture2D(webCamTexture.width, webCamTexture.height);
-    //    photo.SetPixels(webCamTexture.GetPixels());
-    //    photo.Apply();
-
-    //    //Encode to a PNG
-    //    byte[] bytes = photo.EncodeToPNG();
-    //    //Write out the PNG. Of course you have to substitute your_path for something sensible
-    //}
 }
